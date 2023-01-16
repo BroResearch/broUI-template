@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bro?</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../dist/output.css" />
+</head>
+
+<body class="bg-currentLine">
+  <nav x-data="{ isClosed: false }" class="bg-background">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <!-- Mobile menu button-->
+          <button @click="isClosed = !isClosed" type="button"
+            class="inline-flex items-center justify-center rounded-md p-2 text-foreground hover:bg-currentLine hover:text-purple "
+            aria-controls="mobile-menu" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <!--
+                  Icon when menu is closed.
+      
+                  Heroicon name: outline/bars-3
+      
+                  Menu open: "hidden", Menu closed: "block"
+                -->
+            <svg :class="{'hidden': isClosed, 'block': !isClosed }" class="block h-6 w-6"
+              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <!--
+                  Icon when menu is open.
+      
+                  Heroicon name: outline/x-mark
+      
+                  Menu open: "block", Menu closed: "hidden"
+                -->
+            <svg :class="{'block': isClosed, 'hidden': !isClosed }" class="hidden h-6 w-6"
+              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="flex flex-shrink-0 items-center">
+            <img class="block h-8 w-auto lg:hidden" src="../assets/title.png" alt="Bro?">
+            <img class="hidden h-8 w-auto lg:block" src="../assets/title.png" alt="Bro?">
+          </div>
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <a href="#"
+                class="text-foreground hover:bg-currentLine hover:text-purple px-3 py-2 rounded-md text-sm font-medium">Homepage</a>
+
+              <a href="#"
+                class="text-foreground hover:bg-currentLine hover:text-purple px-3 py-2 rounded-md text-sm font-medium">Team</a>
+
+              <a href="#"
+                class="text-foreground hover:bg-currentLine hover:text-purple px-3 py-2 rounded-md text-sm font-medium">API
+                docs</a>
+            </div>
+          </div>
+        </div>
+        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <button type="button" class="rounded-full hover:bg-currentLine p-1 text-foreground hover:text-purple">
+            <span class="sr-only">New post</span>
+            <!-- Heroicon name: outline/plus-circle -->
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </button>
+
+          <!-- Profile dropdown -->
+          <div x-data="{ isOpen: false }" class="relative ml-3">
+            <div>
+              <button @click="isOpen = !isOpen" type="button"
+                class="flex rounded-full bg-green text-sm focus:outline-none focus:ring-2 focus:ring-purple "
+                id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                <span class="sr-only">Open user menu</span>
+                <img class="h-8 w-8 rounded-full"
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  alt="" />
+              </button>
+            </div>
+
+            <!--
+                  Dropdown menu, show/hide based on menu state.
+      
+                  Entering: "transition ease-out duration-100"
+                    From: "transform opacity-0 scale-95"
+                    To: "transform opacity-100 scale-100"
+                  Leaving: "transition ease-in duration-75"
+                    From: "transform opacity-100 scale-100"
+                    To: "transform opacity-0 scale-95"
+                -->
+            <div x-show="isOpen" x-transition:enter="transition ease-out duration-100 transform"
+              x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+              x-transition:leave="transition ease-in duration-75 transform"
+              x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+              class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-currentLine py-1 shadow-lg"
+              role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+              <!-- Active: "bg-gray-100", Not Active: "" -->
+              <a href="#" class="block px-4 py-2 text-sm text-foreground hover:text-purple" role="menuitem"
+                tabindex="-1" id="user-menu-item-0">Your Profile</a>
+              <a href="#" class="block px-4 py-2 text-sm text-foreground hover:text-purple" role="menuitem"
+                tabindex="-1" id="user-menu-item-1">Settings</a>
+              <a href="#" class="block px-4 py-2 text-sm text-foreground hover:text-purple" role="menuitem"
+                tabindex="-1" id="user-menu-item-2">Sign out</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div x-show="isClosed" x-transition:enter="transition ease-out duration-100 transform"
+      x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+      x-transition:leave="transition ease-in duration-75 transform" x-transition:leave-start="opacity-100 scale-100"
+      x-transition:leave-end="opacity-0 scale-95" class="sm:hidden" id="mobile-menu">
+      <div class="space-y-1 px-2 pt-2 pb-3">
+        <a href="#"
+          class="text-foreground hover:bg-currentLine hover:text-purple block px-3 py-2 rounded-md text-base font-medium">Homepage</a>
+
+        <a href="#"
+          class="text-foreground hover:bg-currentLine hover:text-purple block px-3 py-2 rounded-md text-base font-medium">Team</a>
+
+        <a href="#"
+          class="text-foreground hover:bg-currentLine hover:text-purple block px-3 py-2 rounded-md text-base font-medium">API
+          docs</a>
+      </div>
+      </divclass=>
+  </nav>
+
+  <header class="bg-currentLine shadow">
+    <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold tracking-tight text-pink align">Homepage</h1>
+    </div>
+  </header>
+  <main>
+    <!-- Replace with your content -->
+    <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+      <div class="relative px-4 pt-14 sm:px-6 lg:px-8">
+        <main>
+          <article class="prose dark:prose-invert">
+            <h1>Contacts</h1>
+            <p class="lead">As the name suggests, contacts are a core part of Protocol — the very reason Protocol exists
+              is so you can have secure conversations with your contacts. On this page, we'll dive into the different
+              contact endpoints you can use to manage contacts programmatically. We'll look at how to query, create,
+              update, and delete contacts.</p>
+            <h2 id="the-contact-model" class="scroll-mt-24"><a
+                class="group text-inherit no-underline hover:text-inherit" href="/contacts#the-contact-model">The
+                contact model</a></h2>
+            <p>The contact model contains all the information about your contacts, such as their username, avatar, and
+              phone number. It also contains a reference to the conversation between you and the contact and information
+              about when they were last active on Protocol.</p>
+            <h3>Properties</h3>
+            <div class="my-6">
+              <ul role="list"
+                class="m-0 max-w-[calc(theme(maxWidth.lg)-theme(spacing.8))] list-none divide-y divide-zinc-900/5 p-0 dark:divide-white/5">
+                <li class="m-0 px-0 py-4 first:pt-0 last:pb-0">
+                  <dl class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <dt class="sr-only">Name</dt>
+                    <dd><code>id</code></dd>
+                    <dt class="sr-only">Type</dt>
+                    <dd class="font-mono text-xs text-zinc-400 dark:text-zinc-500">string</dd>
+                    <dt class="sr-only">Description</dt>
+                    <dd class="w-full flex-none first:mt-0 last:mb-0">
+                      <p>Unique identifier for the contact.</p>
+                    </dd>
+                  </dl>
+                </li>
+                <li class="m-0 px-0 py-4 first:pt-0 last:pb-0">
+                  <dl class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <dt class="sr-only">Name</dt>
+                    <dd><code>username</code></dd>
+                    <dt class="sr-only">Type</dt>
+                    <dd class="font-mono text-xs text-zinc-400 dark:text-zinc-500">string</dd>
+                    <dt class="sr-only">Description</dt>
+                    <dd class="w-full flex-none first:mt-0 last:mb-0">
+                      <p>The username for the contact.</p>
+                    </dd>
+                  </dl>
+                </li>
+                <li class="m-0 px-0 py-4 first:pt-0 last:pb-0">
+                  <dl class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <dt class="sr-only">Name</dt>
+                    <dd><code>phone_number</code></dd>
+                    <dt class="sr-only">Type</dt>
+                    <dd class="font-mono text-xs text-zinc-400 dark:text-zinc-500">string</dd>
+                    <dt class="sr-only">Description</dt>
+                    <dd class="w-full flex-none first:mt-0 last:mb-0">
+                      <p>The phone number for the contact.</p>
+                    </dd>
+                  </dl>
+                </li>
+                <li class="m-0 px-0 py-4 first:pt-0 last:pb-0">
+                  <dl class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <dt class="sr-only">Name</dt>
+                    <dd><code>avatar_url</code></dd>
+                    <dt class="sr-only">Type</dt>
+                    <dd class="font-mono text-xs text-zinc-400 dark:text-zinc-500">string</dd>
+                    <dt class="sr-only">Description</dt>
+                    <dd class="w-full flex-none first:mt-0 last:mb-0">
+                      <p>The avatar image URL for the contact.</p>
+                    </dd>
+                  </dl>
+                </li>
+                <li class="m-0 px-0 py-4 first:pt-0 last:pb-0">
+                  <dl class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <dt class="sr-only">Name</dt>
+                    <dd><code>display_name</code></dd>
+                    <dt class="sr-only">Type</dt>
+                    <dd class="font-mono text-xs text-zinc-400 dark:text-zinc-500">string</dd>
+                    <dt class="sr-only">Description</dt>
+                    <dd class="w-full flex-none first:mt-0 last:mb-0">
+                      <p>The contact display name in the contact list. By default, this is just the
+                        username.</p>
+                    </dd>
+                  </dl>
+                </li>
+                <li class="m-0 px-0 py-4 first:pt-0 last:pb-0">
+                  <dl class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <dt class="sr-only">Name</dt>
+                    <dd><code>conversation_id</code></dd>
+                    <dt class="sr-only">Type</dt>
+                    <dd class="font-mono text-xs text-zinc-400 dark:text-zinc-500">string</dd>
+                    <dt class="sr-only">Description</dt>
+                    <dd class="w-full flex-none first:mt-0 last:mb-0">
+                      <p>Unique identifier for the conversation associated with the contact.</p>
+                    </dd>
+                  </dl>
+                </li>
+                <li class="m-0 px-0 py-4 first:pt-0 last:pb-0">
+                  <dl class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <dt class="sr-only">Name</dt>
+                    <dd><code>last_active_at</code></dd>
+                    <dt class="sr-only">Type</dt>
+                    <dd class="font-mono text-xs text-zinc-400 dark:text-zinc-500">timestamp</dd>
+                    <dt class="sr-only">Description</dt>
+                    <dd class="w-full flex-none first:mt-0 last:mb-0">
+                      <p>Timestamp of when the contact was last active on the platform.</p>
+                    </dd>
+                  </dl>
+                </li>
+                <li class="m-0 px-0 py-4 first:pt-0 last:pb-0">
+                  <dl class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <dt class="sr-only">Name</dt>
+                    <dd><code>created_at</code></dd>
+                    <dt class="sr-only">Type</dt>
+                    <dd class="font-mono text-xs text-zinc-400 dark:text-zinc-500">timestamp</dd>
+                    <dt class="sr-only">Description</dt>
+                    <dd class="w-full flex-none first:mt-0 last:mb-0">
+                      <p>Timestamp of when the contact was created.</p>
+                    </dd>
+                  </dl>
+                </li>
+              </ul>
+            </div>
+            <hr>
+            <div class="flex items-center gap-x-3"><span
+                class="font-mono text-[0.625rem] font-semibold leading-6 rounded-lg px-1.5 ring-1 ring-inset ring-cyan bg-comment text-cyan">GET</span><span
+                class="h-0.5 w-0.5 rounded-full bg-zinc-300 dark:bg-zinc-600"></span><span
+                class="font-mono text-xs text-cyan">/v1/contacts</span></div>
+            <h2 id="list-all-contacts" class="mt-2 scroll-mt-32"><a
+                class="group text-foreground no-underline" href="/contacts#list-all-contacts">List all
+                contacts</a></h2>
+            <div class="grid grid-cols-1 items-start gap-x-16 xl:max-w-none xl:grid-cols-2">
+              <div class="first:mt-0 last:mb-0 text-foreground">
+                <p>This endpoint allows you to retrieve a paginated list of all your contacts. By default, a maximum of
+                  ten contacts are shown per page.</p>
+                <h3>Optional attributes</h3>
+                <div class="my-6">
+                  <ul role="list"
+                    class="m-0 max-w-[calc(theme(maxWidth.lg)-theme(spacing.8))] list-none divide-y divide-zinc-900/5 p-0">
+                    <li class="m-0 px-0 py-4 first:pt-0 last:pb-0">
+                      <dl class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2">
+                        <dt class="sr-only">Name</dt>
+                        <dd class="font-mono text-[0.625rem] font-semibold leading-6 rounded-lg px-1.5 ring-1 ring-inset ring-foreground bg-background text-foreground"><code>limit</code></dd>
+                        <dt class="sr-only">Type</dt>
+                        <dd class="font-mono text-xs text-cyan">integer</dd>
+                        <dt class="sr-only">Description</dt>
+                        <dd class="w-full flex-none first:mt-0 last:mb-0">
+                          <p>Limit the number of contacts returned.</p>
+                        </dd>
+                      </dl>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="first:mt-0 last:mb-0 xl:sticky xl:top-24 text-foreground">
+                <div
+                  class="not-prose my-4 overflow-hidden rounded-2xl bg-zinc-900 shadow-md dark:ring-1 dark:ring-white/10">
+                  <div
+                    class="flex min-h-[calc(theme(spacing.12)+1px)] flex-wrap items-start gap-x-4 border-b border-purple bg-background px-4">
+                    <h3 class="mr-auto pt-3 text-xs font-semibold text-foreground">Request</h3>
+                    <div class="-mb-px flex gap-4 text-xs font-medium" role="tablist" aria-orientation="horizontal">
+                      <button
+                        class="border-b py-3 transition focus:[&:not(:focus-visible)]:outline-none border-emerald-500 text-purple"
+                        id="headlessui-tabs-tab-:r67:" role="tab" type="button" aria-selected="true" tabindex="0"
+                        data-headlessui-state="selected"
+                        aria-controls="headlessui-tabs-panel-:r6b:">cURL</button><button
+                        class="border-b py-3 transition focus:[&:not(:focus-visible)]:outline-none border-transparent text-foreground hover:text-zinc-300"
+                        id="headlessui-tabs-tab-:r68:" role="tab" type="button" aria-selected="false" tabindex="-1"
+                        data-headlessui-state="" aria-controls="headlessui-tabs-panel-:r6c:">JavaScript</button><button
+                        class="border-b py-3 transition focus:[&:not(:focus-visible)]:outline-none border-transparent text-foreground hover:text-zinc-300"
+                        id="headlessui-tabs-tab-:r69:" role="tab" type="button" aria-selected="false" tabindex="-1"
+                        data-headlessui-state="" aria-controls="headlessui-tabs-panel-:r6d:">Python</button><button
+                        class="border-b py-3 transition focus:[&:not(:focus-visible)]:outline-none border-transparent text-foreground hover:text-zinc-300"
+                        id="headlessui-tabs-tab-:r6a:" role="tab" type="button" aria-selected="false" tabindex="-1"
+                        data-headlessui-state="" aria-controls="headlessui-tabs-panel-:r6e:">PHP</button>
+                    </div>
+                  </div>
+                  <div>
+                    <div id="headlessui-tabs-panel-:r63:" role="tabpanel" aria-labelledby="headlessui-tabs-tab-:r5v:"
+                      tabindex="0" data-headlessui-state="selected">
+                      <div class="group bg-background">
+                        <div
+                          class="flex h-9 items-center gap-2 border-y border-t-transparent border-purple bg-zinc-900 bg-white/2.5 px-4">
+                          <div class="dark flex"><span
+                              class="font-mono text-[0.625rem] font-semibold leading-6 text-cyan">GET</span>
+                          </div><span class="h-0.5 w-0.5 rounded-full bg-zinc-500"></span><span
+                            class="font-mono text-xs text-zinc-400">/v1/contacts</span>
+                        </div>
+                        <div class="relative">
+                          <pre class="overflow-x-auto p-4 text-xs text-white"><code class="language-bash"><span><span>curl -G https://api.protocol.chat/v1/contacts \</span></span>
+                          <span><span>  -H </span><span>"Authorization: Bearer {token}"</span><span> \</span></span>
+                          <span><span>  -d active=true \</span></span>
+                          <span><span>  -d limit=10</span></span>
+                          <span></span></code></pre><button type="button"
+                            class="group/button absolute top-3.5 right-4 overflow-hidden rounded-full py-1 pl-2 pr-3 text-2xs font-medium opacity-0 backdrop-blur transition focus:opacity-100 group-hover:opacity-100 bg-white/5 hover:bg-white/7.5 dark:bg-white/2.5 dark:hover:bg-white/5"><span
+                              aria-hidden="false"
+                              class="pointer-events-none flex items-center gap-0.5 text-zinc-400 transition duration-300"><svg
+                                viewBox="0 0 20 20" aria-hidden="true"
+                                class="h-5 w-5 fill-zinc-500/20 stroke-zinc-500 transition-colors group-hover/button:stroke-zinc-400">
+                                <path stroke-width="0"
+                                  d="M5.5 13.5v-5a2 2 0 0 1 2-2l.447-.894A2 2 0 0 1 9.737 4.5h.527a2 2 0 0 1 1.789 1.106l.447.894a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-5a2 2 0 0 1-2-2Z">
+                                </path>
+                                <path fill="none" stroke-linejoin="round"
+                                  d="M12.5 6.5a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2m5 0-.447-.894a2 2 0 0 0-1.79-1.106h-.527a2 2 0 0 0-1.789 1.106L7.5 6.5m5 0-1 1h-3l-1-1">
+                                </path>
+                              </svg>Copy</span><span aria-hidden="true"
+                              class="pointer-events-none absolute inset-0 flex items-center justify-center text-purple transition duration-300 translate-y-1.5 opacity-0">Copied!</span></button>
+                        </div>
+                      </div>
+                    </div><span id="headlessui-tabs-panel-:r64:" role="tabpanel"
+                      aria-labelledby="headlessui-tabs-tab-:r60:" tabindex="-1"
+                      style="position: fixed; top: 1px; left: 1px; width: 1px; height: 0px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border-width: 0px;"></span><span
+                      id="headlessui-tabs-panel-:r65:" role="tabpanel" aria-labelledby="headlessui-tabs-tab-:r61:"
+                      tabindex="-1"
+                      style="position: fixed; top: 1px; left: 1px; width: 1px; height: 0px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border-width: 0px;"></span><span
+                      id="headlessui-tabs-panel-:r66:" role="tabpanel" aria-labelledby="headlessui-tabs-tab-:r62:"
+                      tabindex="-1"
+                      style="position: fixed; top: 1px; left: 1px; width: 1px; height: 0px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border-width: 0px;"></span>
+                  </div>
+                </div>
+                <div
+                  class="not-prose my-6 overflow-hidden rounded-2xl bg-zinc-900 shadow-md bg-background">
+                  <div
+                    class="flex min-h-[calc(theme(spacing.12)+1px)] flex-wrap items-start gap-x-4 border-b border-purple px-4">
+                    <h3 class="mr-auto pt-3 text-xs font-semibold text-white">Response</h3>
+                  </div>
+                  <div class="group dark:bg-white/2.5">
+                    <div class="relative">
+                      <pre class="overflow-x-auto p-4 text-xs text-white"><code class="language-json"><span><span>{</span></span>
+                        <span><span>  </span><span>"id"</span><span>:</span><span> </span><span>"WAz8eIbvDR60rouK"</span><span>,</span></span>
+                        <span><span>  </span><span>"username"</span><span>:</span><span> </span><span>"FrankMcCallister"</span><span>,</span></span>
+                        <span><span>  </span><span>"phone_number"</span><span>:</span><span> </span><span>"1-800-759-3000"</span><span>,</span></span>
+                        <span><span>  </span><span>"avatar_url"</span><span>:</span><span> </span><span>"https://assets.protocol.chat/avatars/frank.jpg"</span><span>,</span></span>
+                        <span><span>  </span><span>"display_name"</span><span>:</span><span> </span><span>null</span><span>,</span></span>
+                        <span><span>  </span><span>"conversation_id"</span><span>:</span><span> </span><span>"xgQQXg3hrtjh7AvZ"</span><span>,</span></span>
+                        <span><span>  </span><span>"last_active_at"</span><span>:</span><span> </span><span>null</span><span>,</span></span>
+                        <span><span>  </span><span>"created_at"</span><span>:</span><span> </span><span>692233200</span></span>
+                        <span><span>}</span></span>
+                        <span></span></code></pre><button type="button"
+                        class="group/button absolute top-3.5 right-4 overflow-hidden rounded-full py-1 pl-2 pr-3 text-2xs font-medium opacity-0 backdrop-blur transition focus:opacity-100 group-hover:opacity-100 bg-white/5 hover:bg-white/7.5 dark:bg-white/2.5 dark:hover:bg-white/5"><span
+                          aria-hidden="false"
+                          class="pointer-events-none flex items-center gap-0.5 text-zinc-400 transition duration-300"><svg
+                            viewBox="0 0 20 20" aria-hidden="true"
+                            class="h-5 w-5 fill-zinc-500/20 stroke-zinc-500 transition-colors group-hover/button:stroke-zinc-400">
+                            <path stroke-width="0"
+                              d="M5.5 13.5v-5a2 2 0 0 1 2-2l.447-.894A2 2 0 0 1 9.737 4.5h.527a2 2 0 0 1 1.789 1.106l.447.894a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-5a2 2 0 0 1-2-2Z">
+                            </path>
+                            <path fill="none" stroke-linejoin="round"
+                              d="M12.5 6.5a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2m5 0-.447-.894a2 2 0 0 0-1.79-1.106h-.527a2 2 0 0 0-1.789 1.106L7.5 6.5m5 0-1 1h-3l-1-1">
+                            </path>
+                          </svg>Copy</span><span aria-hidden="true"
+                          class="pointer-events-none absolute inset-0 flex items-center justify-center text-purple transition duration-300 translate-y-1.5 opacity-0">Copied!</span></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr>
+
+            </div>
+            </div>
+          </article>
+        </main>
+      </div>
+    </div>
+    <!-- Replace with your content -->
+  </main>
+  <script src="../dist/output.js"></script>
+</body>
+
+</html>
