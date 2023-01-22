@@ -147,29 +147,29 @@
       <div class="relative px-4 pt-14 sm:px-6 lg:px-8">
         <main>
           <article class="prose dark:prose-invert">
-            <h1>Contacts</h1>
-            <p class="lead">As the name suggests, contacts are a core part of Protocol — the very reason Protocol exists
+            <h1 class="text-xl text-foreground">Contacts</h1>
+            <p class="lead text-foreground">As the name suggests, contacts are a core part of Protocol — the very reason Protocol exists
               is so you can have secure conversations with your contacts. On this page, we'll dive into the different
               contact endpoints you can use to manage contacts programmatically. We'll look at how to query, create,
               update, and delete contacts.</p>
-            <h2 id="the-contact-model" class="scroll-mt-24"><a
-                class="group text-inherit no-underline hover:text-inherit" href="/contacts#the-contact-model">The
+            <h2 id="the-contact-model" class="scroll-mt-24 text-cyan mt-10"><a
+                class="group text-inherit no-underline hover:text-inherit" href="#">The
                 contact model</a></h2>
-            <p>The contact model contains all the information about your contacts, such as their username, avatar, and
+            <p class="text-foreground">The contact model contains all the information about your contacts, such as their username, avatar, and
               phone number. It also contains a reference to the conversation between you and the contact and information
               about when they were last active on Protocol.</p>
-            <h3>Properties</h3>
+            <h3 class="text-xl text-foreground mt-10">Properties</h3>
             <div class="my-6">
               <ul role="list"
                 class="m-0 max-w-[calc(theme(maxWidth.lg)-theme(spacing.8))] list-none divide-y divide-zinc-900/5 p-0 dark:divide-white/5">
                 <li class="m-0 px-0 py-4 first:pt-0 last:pb-0">
                   <dl class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2">
                     <dt class="sr-only">Name</dt>
-                    <dd><code>id</code></dd>
+                    <dd class="font-mono text-[0.8rem] font-semibold leading-6 rounded-lg px-1.5 ring-1 ring-inset ring-foreground bg-background text-foreground"><code>id</code></dd>
                     <dt class="sr-only">Type</dt>
-                    <dd class="font-mono text-xs text-zinc-400 dark:text-zinc-500">string</dd>
+                    <dd class="font-mono text-xs text-cyan">string</dd>
                     <dt class="sr-only">Description</dt>
-                    <dd class="w-full flex-none first:mt-0 last:mb-0">
+                    <dd class="w-full flex-none first:mt-0 last:mb-0 text-foreground">
                       <p>Unique identifier for the contact.</p>
                     </dd>
                   </dl>
@@ -177,11 +177,11 @@
                 <li class="m-0 px-0 py-4 first:pt-0 last:pb-0">
                   <dl class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2">
                     <dt class="sr-only">Name</dt>
-                    <dd><code>username</code></dd>
+                    <dd class="font-mono text-[0.8rem] font-semibold leading-6 rounded-lg px-1.5 ring-1 ring-inset ring-foreground bg-background text-foreground"><code>username</code></dd>
                     <dt class="sr-only">Type</dt>
-                    <dd class="font-mono text-xs text-zinc-400 dark:text-zinc-500">string</dd>
+                    <dd class="font-mono text-xs text-cyan">string</dd>
                     <dt class="sr-only">Description</dt>
-                    <dd class="w-full flex-none first:mt-0 last:mb-0">
+                    <dd class="w-full flex-none first:mt-0 last:mb-0 text-foreground">
                       <p>The username for the contact.</p>
                     </dd>
                   </dl>
@@ -189,11 +189,11 @@
                 <li class="m-0 px-0 py-4 first:pt-0 last:pb-0">
                   <dl class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2">
                     <dt class="sr-only">Name</dt>
-                    <dd><code>phone_number</code></dd>
+                    <dd class="font-mono text-[0.8rem] font-semibold leading-6 rounded-lg px-1.5 ring-1 ring-inset ring-foreground bg-background text-foreground"><code>phone_number</code></dd>
                     <dt class="sr-only">Type</dt>
-                    <dd class="font-mono text-xs text-zinc-400 dark:text-zinc-500">string</dd>
+                    <dd class="font-mono text-xs text-cyan">string</dd>
                     <dt class="sr-only">Description</dt>
-                    <dd class="w-full flex-none first:mt-0 last:mb-0">
+                    <dd class="w-full flex-none first:mt-0 last:mb-0 text-foreground">
                       <p>The phone number for the contact.</p>
                     </dd>
                   </dl>
@@ -201,11 +201,11 @@
                 <li class="m-0 px-0 py-4 first:pt-0 last:pb-0">
                   <dl class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2">
                     <dt class="sr-only">Name</dt>
-                    <dd><code>avatar_url</code></dd>
+                    <dd class="font-mono text-[0.8rem] font-semibold leading-6 rounded-lg px-1.5 ring-1 ring-inset ring-foreground bg-background text-foreground"><code>avatar_url</code></dd>
                     <dt class="sr-only">Type</dt>
-                    <dd class="font-mono text-xs text-zinc-400 dark:text-zinc-500">string</dd>
+                    <dd class="font-mono text-xs text-cyan">string</dd>
                     <dt class="sr-only">Description</dt>
-                    <dd class="w-full flex-none first:mt-0 last:mb-0">
+                    <dd class="w-full flex-none first:mt-0 last:mb-0 text-foreground">
                       <p>The avatar image URL for the contact.</p>
                     </dd>
                   </dl>
@@ -213,11 +213,11 @@
                 <li class="m-0 px-0 py-4 first:pt-0 last:pb-0">
                   <dl class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2">
                     <dt class="sr-only">Name</dt>
-                    <dd><code>display_name</code></dd>
+                    <dd class="font-mono text-[0.8rem] font-semibold leading-6 rounded-lg px-1.5 ring-1 ring-inset ring-foreground bg-background text-foreground"><code>display_name</code></dd>
                     <dt class="sr-only">Type</dt>
-                    <dd class="font-mono text-xs text-zinc-400 dark:text-zinc-500">string</dd>
+                    <dd class="font-mono text-xs text-cyan">string</dd>
                     <dt class="sr-only">Description</dt>
-                    <dd class="w-full flex-none first:mt-0 last:mb-0">
+                    <dd class="w-full flex-none first:mt-0 last:mb-0 text-foreground">
                       <p>The contact display name in the contact list. By default, this is just the
                         username.</p>
                     </dd>
@@ -226,11 +226,11 @@
                 <li class="m-0 px-0 py-4 first:pt-0 last:pb-0">
                   <dl class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2">
                     <dt class="sr-only">Name</dt>
-                    <dd><code>conversation_id</code></dd>
+                    <dd class="font-mono text-[0.8rem] font-semibold leading-6 rounded-lg px-1.5 ring-1 ring-inset ring-foreground bg-background text-foreground"><code>conversation_id</code></dd>
                     <dt class="sr-only">Type</dt>
-                    <dd class="font-mono text-xs text-zinc-400 dark:text-zinc-500">string</dd>
+                    <dd class="font-mono text-xs text-cyan">string</dd>
                     <dt class="sr-only">Description</dt>
-                    <dd class="w-full flex-none first:mt-0 last:mb-0">
+                    <dd class="w-full flex-none first:mt-0 last:mb-0 text-foreground">
                       <p>Unique identifier for the conversation associated with the contact.</p>
                     </dd>
                   </dl>
@@ -238,11 +238,11 @@
                 <li class="m-0 px-0 py-4 first:pt-0 last:pb-0">
                   <dl class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2">
                     <dt class="sr-only">Name</dt>
-                    <dd><code>last_active_at</code></dd>
+                    <dd class="font-mono text-[0.8rem] font-semibold leading-6 rounded-lg px-1.5 ring-1 ring-inset ring-foreground bg-background text-foreground"><code>last_active_at</code></dd>
                     <dt class="sr-only">Type</dt>
-                    <dd class="font-mono text-xs text-zinc-400 dark:text-zinc-500">timestamp</dd>
+                    <dd class="font-mono text-xs text-cyan">timestamp</dd>
                     <dt class="sr-only">Description</dt>
-                    <dd class="w-full flex-none first:mt-0 last:mb-0">
+                    <dd class="w-full flex-none first:mt-0 last:mb-0 text-foreground">
                       <p>Timestamp of when the contact was last active on the platform.</p>
                     </dd>
                   </dl>
@@ -250,11 +250,11 @@
                 <li class="m-0 px-0 py-4 first:pt-0 last:pb-0">
                   <dl class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2">
                     <dt class="sr-only">Name</dt>
-                    <dd><code>created_at</code></dd>
+                    <dd class="font-mono text-[0.8rem] font-semibold leading-6 rounded-lg px-1.5 ring-1 ring-inset ring-foreground bg-background text-foreground"><code>created_at</code></dd>
                     <dt class="sr-only">Type</dt>
-                    <dd class="font-mono text-xs text-zinc-400 dark:text-zinc-500">timestamp</dd>
+                    <dd class="font-mono text-xs text-cyan">timestamp</dd>
                     <dt class="sr-only">Description</dt>
-                    <dd class="w-full flex-none first:mt-0 last:mb-0">
+                    <dd class="w-full flex-none first:mt-0 last:mb-0 text-foreground text-foreground">
                       <p>Timestamp of when the contact was created.</p>
                     </dd>
                   </dl>
@@ -262,12 +262,12 @@
               </ul>
             </div>
             <hr>
-            <div class="flex items-center gap-x-3"><span
-                class="font-mono text-[0.625rem] font-semibold leading-6 rounded-lg px-1.5 ring-1 ring-inset ring-cyan bg-comment text-cyan">GET</span><span
+            <div class="flex items-center gap-x-3 mt-10"><span
+                class="font-mono text-[0.8rem] font-semibold leading-6 rounded-lg px-1.5 ring-1 ring-inset ring-cyan bg-comment text-cyan">GET</span><span
                 class="h-0.5 w-0.5 rounded-full bg-zinc-300 dark:bg-zinc-600"></span><span
                 class="font-mono text-xs text-cyan">/v1/contacts</span></div>
             <h2 id="list-all-contacts" class="mt-2 scroll-mt-32"><a
-                class="group text-foreground no-underline" href="/contacts#list-all-contacts">List all
+                class="group text-cyan no-underline" href="#">List all
                 contacts</a></h2>
             <div class="grid grid-cols-1 items-start gap-x-16 xl:max-w-none xl:grid-cols-2">
               <div class="first:mt-0 last:mb-0 text-foreground">
@@ -280,7 +280,7 @@
                     <li class="m-0 px-0 py-4 first:pt-0 last:pb-0">
                       <dl class="m-0 flex flex-wrap items-center gap-x-3 gap-y-2">
                         <dt class="sr-only">Name</dt>
-                        <dd class="font-mono text-[0.625rem] font-semibold leading-6 rounded-lg px-1.5 ring-1 ring-inset ring-foreground bg-background text-foreground"><code>limit</code></dd>
+                        <dd class="font-mono text-[0.8rem] font-semibold leading-6 rounded-lg px-1.5 ring-1 ring-inset ring-foreground bg-background text-foreground"><code>limit</code></dd>
                         <dt class="sr-only">Type</dt>
                         <dd class="font-mono text-xs text-cyan">integer</dd>
                         <dt class="sr-only">Description</dt>
